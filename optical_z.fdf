@@ -1,0 +1,125 @@
+
+SystemName  ZnO-Al_optical_z
+SystemLabel ZnO-Al_optical_z
+
+NumberOfAtoms    33
+
+NumberOfSpecies  3
+%block ChemicalSpeciesLabel
+    1   30  Zn
+    2    8  O
+    3   13  Al
+%endblock ChemicalSpeciesLabel
+
+LatticeConstant 1.000 Ang
+%block LatticeVectors
+  6.911226    0.000000    0.000000
+       -3.455613    5.985298    0.000000
+        0.000000    0.000000   11.150958
+%endblock LatticeVectors
+
+AtomicCoordinatesFormat Fractional
+%block AtomicCoordinatesAndAtomicSpecies
+    0.17222135    0.32740122    0.00537027   1       1  Zn
+    0.32228580    0.16060952    0.23399350   1       2  Zn
+    0.15637818    0.33267798    0.19433120   2       3  O
+    0.35931135    0.20787375    0.45145662   2       4  O
+    0.69046206    0.86263879    0.53591385   1       5  Zn
+    0.83925561    0.67706981    0.76495778   1       6  Zn
+    0.66694931    0.84151948    0.71490633   2       7  O
+    0.83789940    0.66176687    0.95127242   2       8  O
+    0.17286015    0.82713985    0.50627511   1       9  Zn
+    0.32764275    0.67235722    0.76491500   1      10  Zn
+    0.16496667    0.83503335    0.69498873   2      11  O
+    0.33886040    0.66113960    0.95114929   2      12  O
+    0.68985754    0.31014227    0.53632857   1      13  Zn
+    0.82743926    0.17256075    0.77578854   1      14  Zn
+    0.66385129    0.33614870    0.71411770   2      15  O
+    0.83807720    0.16192281    0.95702089   2      16  O
+    0.13736119    0.30953794    0.53591384   1      17  Zn
+    0.32293021    0.16074441    0.76495777   1      18  Zn
+    0.15848053    0.33305072    0.71490633   2      19  O
+    0.33823313    0.16210060    0.95127242   2      20  O
+    0.67259875    0.82777865    0.00537027   1      21  Zn
+    0.83939051    0.67771423    0.23399350   1      22  Zn
+    0.66732203    0.84362182    0.19433120   2      23  O
+    0.79212574    0.64068841    0.45145653   2      24  O
+    0.17259738    0.82740263   -0.00409973   1      25  Zn
+    0.32791804    0.67208194    0.23461652   1      26  Zn
+    0.16496748    0.83503253    0.18799556   2      27  O
+    0.35877671    0.64122331    0.45145819   2      28  O
+    0.67243290    0.32756712    0.00570964   1      29  Zn
+    0.82765243    0.17234758    0.25536324   1      30  Zn
+    0.66468727    0.33531272    0.19528085   2      31  O
+    0.83770620    0.16229381    0.45035201   2      32  O
+    0.50349009    0.49651002    0.39192153   3      33  Al
+%endblock AtomicCoordinatesAndAtomicSpecies
+
+# K-points
+
+%block kgrid_Monkhorst_Pack
+5   0   0   0.0
+0   5   0   0.0
+0   0   5  0.0
+%endblock kgrid_Monkhorst_Pack
+ 
+
+#%blockSuperCell
+# 1   0   0
+# 1   1   0
+# 0   0   9
+#%endblockSuperCell
+ 
+#%block GeometryConstraints
+#position from  1 to  180
+#%endblock GeometryConstraints
+
+PAO.BasisSize     DZP
+PAO.EnergyShift   0.03 eV
+MD.TypeOfRun      CG
+MaxSCFIterations  300
+SCF.MustConverge  .false.
+MD.NumCGsteps     00
+MD.MaxForceTol    0.005  eV/Ang
+MeshCutoff        200 Ry
+DM.MixingWeight   0.02
+DM.NumberPulay   3
+WriteCoorXmol   .true.
+WriteMullikenPop    1
+XC.functional       GGA
+XC.authors          PBE
+SolutionMethod  diagon
+ElectronicTemperature  50 meV
+SaveRho        .true.
+OpticalCalculation .true.
+
+%block  Optical.Mesh
+      10 10 10
+%endblock  Optical.Mesh
+
+Optical.OffsetMesh .true.
+
+Optical.PolarizationType polarized
+
+%block  Optical.Vector
+          0.0 0.0 1.0
+%endblock  Optical.Vector
+
+Optical.Broaden 0.3 eV
+
+Optical.EnergyMaximum  20.0 eV
+
+Optical.EnergyMinimum  0.0 eV
+
+
+
+ 
+
+UseSaveData     true
+DM.UseSaveDM    true
+MD.UseSaveXV    true
+MD.UseSaveCG    true
+
+ 
+
+
